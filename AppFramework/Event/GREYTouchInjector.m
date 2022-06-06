@@ -195,6 +195,7 @@ static const NSTimeInterval kTouchInjectFramerateInv = 1 / 120.0;
         [touch _setSenderID:0x0acefade00000002 /* value sourced from trial run on simulator */];
       }
       UIView *touchView = [_window hitTest:touchPoint withEvent:event];
+      NSLog(@"@@@ WILL TOUCH VIEW %@", touchView);
       [touch setView:touchView];
       SetTouchFlagPropertyInUITouch(touch);
       [ongoingTouches addObject:touch];
@@ -202,6 +203,7 @@ static const NSTimeInterval kTouchInjectFramerateInv = 1 / 120.0;
       touch = ongoingTouches[i];
       if (!touch.view) {
         [touch setView:[_window hitTest:touchPoint withEvent:event]];
+        NSLog(@"@@@ ONGOING WILL TOUCH VIEW %@", touch.view);
       }
     }
 
